@@ -3,6 +3,16 @@
 # dependencies
 node_modules/
 
+android/
+ios/
+# Build output
+*.apk
+*.abb
+
+.env
+
+
+
 # Expo
 .expo/
 dist/
