@@ -12,7 +12,13 @@ import { useFinanceStore } from "@/stores/financeStore";
 import { useThemeStore } from "@/stores/themeStore";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { router, useLocalSearchParams } from "expo-router";
-import { Calendar, DollarSign, Repeat, Type, X } from "lucide-react-native";
+import {
+  Calendar,
+  IndianRupeeIcon,
+  Repeat,
+  Type,
+  X,
+} from "lucide-react-native";
 import React, { useEffect, useState } from "react";
 import {
   ScrollView,
@@ -284,7 +290,7 @@ export default function AddTransactionScreen() {
             keyboardType="decimal-pad"
             placeholder="Amount"
             error={errors.amount}
-            icon={<DollarSign size={14} color={theme.textMuted} />}
+            icon={<IndianRupeeIcon size={14} color={theme.textMuted} />}
             style={styles.input}
             labelStyle={styles.inputLabel}
             showLabel={false}

@@ -1,7 +1,6 @@
 import { Tabs } from "expo-router";
 import { LayoutDashboard, PiggyBank, Receipt, User } from "lucide-react-native";
 import React from "react";
-import { StyleSheet } from "react-native";
 import { darkTheme, lightTheme } from "../../constants/theme";
 import { useThemeStore } from "../../stores/themeStore";
 

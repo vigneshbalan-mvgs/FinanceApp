@@ -1,11 +1,16 @@
-import { format } from 'date-fns';
+import { format } from "date-fns";
 import { Edit, Trash2 } from "lucide-react-native";
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { darkTheme, lightTheme, spacing, typography } from '../../constants/theme';
-import { useThemeStore } from '../../stores/themeStore';
-import { Transaction } from '../../types';
-import { Card } from '../atoms/Card';
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  darkTheme,
+  lightTheme,
+  spacing,
+  typography,
+} from "../../constants/theme";
+import { useThemeStore } from "../../stores/themeStore";
+import { Transaction } from "../../types";
+import { Card } from "../atoms/Card";
 
 interface TransactionItemProps {
   transaction: Transaction;
@@ -24,12 +29,12 @@ export const TransactionItem: React.FC<TransactionItemProps> = ({
   const theme = isDark ? darkTheme : lightTheme;
 
   const formatAmount = (amount: number, type: string) => {
-    const formatted = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
+    const formatted = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "INR",
     }).format(amount);
 
-    return type === 'income' ? `+${formatted}` : `-${formatted}`;
+    return type === "income" ? `+${formatted}` : `-${formatted}`;
   };
 
   return (
@@ -40,11 +45,13 @@ export const TransactionItem: React.FC<TransactionItemProps> = ({
             <View
               style={[
                 styles.categoryIcon,
-                { backgroundColor: transaction.category?.color || theme.primary },
+                {
+                  backgroundColor: transaction.category?.color || theme.primary,
+                },
               ]}
             >
               <Text style={styles.categoryIconText}>
-                {transaction.category?.icon || '💰'}
+                {transaction.category?.icon || "💰"}
               </Text>
             </View>
             <View style={styles.details}>
@@ -55,7 +62,7 @@ export const TransactionItem: React.FC<TransactionItemProps> = ({
                 {transaction.category?.name}
               </Text>
               <Text style={[styles.date, { color: theme.textMuted }]}>
-                {format(new Date(transaction.date), 'MMM dd, yyyy')}
+                {format(new Date(transaction.date), "MMM dd, yyyy")}
               </Text>
             </View>
           </View>
@@ -65,7 +72,7 @@ export const TransactionItem: React.FC<TransactionItemProps> = ({
                 styles.amount,
                 {
                   color:
-                    transaction.type === 'income' ? theme.success : theme.error,
+                    transaction.type === "income" ? theme.success : theme.error,
                 },
               ]}
             >
@@ -100,21 +107,21 @@ const styles = StyleSheet.create({
     marginBottom: spacing.sm,
   },
   content: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   left: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     flex: 1,
   },
   categoryIcon: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginRight: spacing.md,
   },
   categoryIconText: {
@@ -125,7 +132,7 @@ const styles = StyleSheet.create({
   },
   description: {
     ...typography.body,
-    fontWeight: '600',
+    fontWeight: "600",
     marginBottom: 2,
   },
   category: {
@@ -136,20 +143,20 @@ const styles = StyleSheet.create({
     ...typography.caption,
   },
   right: {
-    alignItems: 'flex-end',
+    alignItems: "flex-end",
   },
   amount: {
     ...typography.body,
-    fontWeight: '700',
+    fontWeight: "700",
     marginBottom: 2,
   },
   recurring: {
     ...typography.caption,
-    fontStyle: 'italic',
+    fontStyle: "italic",
   },
   actionsRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: 8,
   },
   actionBtn: {

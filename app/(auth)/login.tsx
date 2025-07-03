@@ -1,6 +1,6 @@
-import { Link } from 'expo-router';
-import { Lock, Mail } from 'lucide-react-native';
-import React, { useState } from 'react';
+import { Link, router } from "expo-router";
+import { Lock, Mail } from "lucide-react-native";
+import React, { useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -8,24 +8,35 @@ import {
   StyleSheet,
   Text,
   View,
-} from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Button } from '../../components/atoms/Button';
-import { Input } from '../../components/atoms/Input';
-import { ModalMessage } from '../../components/atoms/ModalMessage';
-import { darkTheme, lightTheme, spacing, typography } from '../../constants/theme';
-import { useAuthStore } from '../../stores/authStore';
-import { useThemeStore } from '../../stores/themeStore';
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Button } from "../../components/atoms/Button";
+import { Input } from "../../components/atoms/Input";
+import { ModalMessage } from "../../components/atoms/ModalMessage";
+import {
+  darkTheme,
+  lightTheme,
+  spacing,
+  typography,
+} from "../../constants/theme";
+import { useAuthStore } from "../../stores/authStore";
+import { useThemeStore } from "../../stores/themeStore";
 
 export default function LoginScreen() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>(
+    {},
+  );
   const [modalVisible, setModalVisible] = useState(false);
-  const [modalContent, setModalContent] = useState<{ title: string; message: string; onClose?: () => void }>({
-    title: '',
-    message: '',
+  const [modalContent, setModalContent] = useState<{
+    title: string;
+    message: string;
+    onClose?: () => void;
+  }>({
+    title: "",
+    message: "",
     onClose: undefined,
   });
 
@@ -38,15 +49,15 @@ export default function LoginScreen() {
     const newErrors: { email?: string; password?: string } = {};
 
     if (!email) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = 'Please enter a valid email';
+      newErrors.email = "Please enter a valid email";
     }
 
     if (!password) {
-      newErrors.password = 'Password is required';
+      newErrors.password = "Password is required";
     } else if (password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
+      newErrors.password = "Password must be at least 6 characters";
     }
 
     setErrors(newErrors);
@@ -59,17 +70,17 @@ export default function LoginScreen() {
     try {
       setLoading(true);
       await signIn(email, password);
-      // Optionally show a success modal, or just navigate
-      // setModalContent({
-      //   title: 'Login Successful',
-      //   message: 'Welcome back!',
-      //   onClose: () => setModalVisible(false),
-      // });
-      // setModalVisible(true);
+      setModalContent({
+        title: "Login Successful",
+        message: "Welcome back!",
+        onClose: () => setModalVisible(false),
+      });
+      setModalVisible(true);
+      router.replace("/(tabs)/dashboard");
     } catch (error: any) {
       setModalContent({
-        title: 'Login Failed',
-        message: error.message || 'An error occurred',
+        title: "Login Failed",
+        message: error.message || "An error occurred",
         onClose: () => setModalVisible(false),
       });
       setModalVisible(true);
@@ -79,7 +90,9 @@ export default function LoginScreen() {
   };
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: theme.background }]}
+    >
       <ModalMessage
         visible={modalVisible}
         title={modalContent.title}
@@ -90,10 +103,13 @@ export default function LoginScreen() {
         }}
       />
       <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.keyboardAvoid}
       >
-        <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        <ScrollView
+          contentContainerStyle={styles.scrollContent}
+          showsVerticalScrollIndicator={false}
+        >
           <View style={styles.header}>
             <Text style={[styles.title, { color: theme.text }]}>
               Welcome Back
@@ -122,9 +138,7 @@ export default function LoginScreen() {
               secureTextEntry={!showPassword}
               autoComplete="password"
               error={errors.password}
-              icon={
-                <Lock size={20} color={theme.textMuted} />
-              }
+              icon={<Lock size={20} color={theme.textMuted} />}
             />
 
             <Button
@@ -145,7 +159,7 @@ export default function LoginScreen() {
 
           <View style={styles.footer}>
             <Text style={[styles.footerText, { color: theme.textSecondary }]}>
-              Don't have an account?{' '}
+              Don't have an account?{" "}
               <Link href="/(auth)/register">
                 <Text style={[styles.link, { color: theme.primary }]}>
                   Sign Up
@@ -168,11 +182,11 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
     padding: spacing.lg,
   },
   header: {
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: spacing.xxl,
   },
   title: {
@@ -181,23 +195,23 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     ...typography.body,
-    textAlign: 'center',
+    textAlign: "center",
     maxWidth: 280,
   },
   form: {
     marginBottom: spacing.xl,
   },
   forgotPassword: {
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: spacing.md,
   },
   footer: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   footerText: {
     ...typography.body,
   },
   link: {
-    fontWeight: '600',
+    fontWeight: "600",
   },
 });

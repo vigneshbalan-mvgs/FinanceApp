@@ -1,9 +1,15 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Budget } from '../../types';
-import { useThemeStore } from '../../stores/themeStore';
-import { lightTheme, darkTheme, spacing, typography, borderRadius } from '../../constants/theme';
-import { Card } from '../atoms/Card';
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { Budget } from "../../types";
+import { useThemeStore } from "../../stores/themeStore";
+import {
+  lightTheme,
+  darkTheme,
+  spacing,
+  typography,
+  borderRadius,
+} from "../../constants/theme";
+import { Card } from "../atoms/Card";
 
 interface BudgetCardProps {
   budget: Budget;
@@ -17,9 +23,9 @@ export const BudgetCard: React.FC<BudgetCardProps> = ({ budget }) => {
   const isOverBudget = budget.spent > budget.amount;
 
   const formatAmount = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "INR",
     }).format(amount);
   };
 
@@ -34,7 +40,7 @@ export const BudgetCard: React.FC<BudgetCardProps> = ({ budget }) => {
             ]}
           >
             <Text style={styles.categoryIconText}>
-              {budget.category?.icon || '💰'}
+              {budget.category?.icon || "💰"}
             </Text>
           </View>
           <View>
@@ -47,7 +53,12 @@ export const BudgetCard: React.FC<BudgetCardProps> = ({ budget }) => {
           </View>
         </View>
         <View style={styles.amounts}>
-          <Text style={[styles.spent, { color: isOverBudget ? theme.error : theme.text }]}>
+          <Text
+            style={[
+              styles.spent,
+              { color: isOverBudget ? theme.error : theme.text },
+            ]}
+          >
             {formatAmount(budget.spent)}
           </Text>
           <Text style={[styles.total, { color: theme.textSecondary }]}>
@@ -55,13 +66,10 @@ export const BudgetCard: React.FC<BudgetCardProps> = ({ budget }) => {
           </Text>
         </View>
       </View>
-      
+
       <View style={styles.progressContainer}>
         <View
-          style={[
-            styles.progressBar,
-            { backgroundColor: theme.borderLight },
-          ]}
+          style={[styles.progressBar, { backgroundColor: theme.borderLight }]}
         >
           <View
             style={[
@@ -86,22 +94,22 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: spacing.md,
   },
   categoryInfo: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     flex: 1,
   },
   categoryIcon: {
     width: 36,
     height: 36,
     borderRadius: 18,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginRight: spacing.sm,
   },
   categoryIconText: {
@@ -109,42 +117,42 @@ const styles = StyleSheet.create({
   },
   categoryName: {
     ...typography.body,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   period: {
     ...typography.caption,
-    textTransform: 'capitalize',
+    textTransform: "capitalize",
   },
   amounts: {
-    alignItems: 'flex-end',
+    alignItems: "flex-end",
   },
   spent: {
     ...typography.body,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   total: {
     ...typography.caption,
   },
   progressContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   progressBar: {
     flex: 1,
     height: 6,
     borderRadius: borderRadius.sm,
     marginRight: spacing.sm,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   progressFill: {
-    height: '100%',
+    height: "100%",
     borderRadius: borderRadius.sm,
   },
   percentage: {
     ...typography.caption,
-    fontWeight: '500',
+    fontWeight: "500",
     minWidth: 60,
-    textAlign: 'right',
+    textAlign: "right",
   },
 });

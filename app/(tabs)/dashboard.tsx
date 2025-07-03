@@ -1,7 +1,7 @@
 import { endOfMonth, format, startOfMonth, subMonths } from "date-fns";
 import { router } from "expo-router";
 import {
-  DollarSign,
+  IndianRupee,
   Plus,
   Target,
   TrendingDown,
@@ -147,7 +147,7 @@ export default function DashboardScreen() {
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "USD",
+      currency: "INR",
     }).format(amount);
   };
 
@@ -180,7 +180,7 @@ export default function DashboardScreen() {
           <StatCard
             title="Balance"
             value={formatCurrency(stats.balance)}
-            icon={<DollarSign size={20} color={theme.primary} />}
+            icon={<IndianRupee size={20} color={theme.primary} />}
           />
           <StatCard
             title="Income"
