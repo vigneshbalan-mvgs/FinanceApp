@@ -23,8 +23,9 @@ export default function TabLayout() {
         tabBarActiveTintColor: theme.primary,
         tabBarInactiveTintColor: theme.textMuted,
         tabBarLabelStyle: {
-          fontWeight: "500",
+          fontSize: 10,
         },
+        tabBarHideOnKeyboard: true,
       }}
     >
       <Tabs.Screen
