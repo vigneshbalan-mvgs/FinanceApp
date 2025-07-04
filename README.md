@@ -1,6 +1,28 @@
-# Welcome to your Expo app 👋
+# FinanceApp 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is a personal finance management application built with [Expo](https://expo.dev). It helps you track your income, expenses, and budgets to achieve your financial goals.
+
+## Screenshots
+
+Here are some screenshots of the application:
+
+| Dashboard | Transactions | Budgets |
+| :---: | :---: | :---: |
+| <img src="assets/public/1.png" width="200"/> | <img src="assets/public/2.png" width="200"/> | <img src="assets/public/3.png" width="200"/> |
+
+| Profile | Categories | Notifications |
+| :---: | :---: | :---: |
+| <img src="assets/public/4.png" width="200"/> | <img src="assets/public/5.png" width="200"/> | <img src="assets/public/7.png" width="200"/> |
+
+
+## Features
+
+- **Dashboard:** Get a quick overview of your financial status.
+- **Transactions:** Add, edit, and view your income and expenses.
+- **Budgets:** Set monthly budgets for different categories and track your spending.
+- **Categories:** Customize your spending categories.
+- **User Authentication:** Securely manage your financial data with user accounts.
+- **Cross-Platform:** Works on iOS, Android, and the web.
 
 ## Get started
 
@@ -24,16 +46,6 @@ In the output, you'll find options to open the app in a
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
 ## Learn more
 
