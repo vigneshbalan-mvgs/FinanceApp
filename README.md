@@ -21,7 +21,7 @@ Here are some screenshots of the application:
 - **Transactions:** Add, edit, and view your income and expenses.
 - **Budgets:** Set monthly budgets for different categories and track your spending.
 - **Categories:** Customize your spending categories.
-- **User Authentication:** Securely manage your financial data with user accounts.
+- **Login & Registration:** Securely create an account and log in to manage your financial data.
 - **Cross-Platform:** Works on iOS, Android, and the web.
 
 ## Get started
